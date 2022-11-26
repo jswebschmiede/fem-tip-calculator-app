@@ -17,11 +17,28 @@ module.exports = {
       },
     },
     extend: {
-      colors: {},
+      colors: {
+        primary: "hsl(var(--color-primary) / <alpha-value>)",
+        "primary-dark": "hsl(var(--color-primary-dark) / <alpha-value>)",
+        "primary-darker": "hsl(var(--color-primary-darker) / <alpha-value>)",
+        "primary-grayish": "hsl(var(--color-primary-grayish) / <alpha-value>)",
+        "primary-grayish-light":
+          "hsl(var(--color-primary-grayish-light) / <alpha-value>)",
+        "primary-grayish-lighter":
+          "hsl(var(--color-primary-grayish-lighter) / <alpha-value>)",
+      },
       fontFamily: {
-        sans: ["Manrope, sans-serif"],
+        sans: ["Space Mono, sans-serif"],
       },
     },
   },
-  plugins: [],
+  corePlugins: {
+    aspectRatio: false,
+  },
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("@tailwindcss/forms")({
+      strategy: "base", // only generate global styles
+    }),
+  ],
 };
