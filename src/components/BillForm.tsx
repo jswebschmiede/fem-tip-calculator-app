@@ -1,6 +1,7 @@
 import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
 import IconDollar from "../assets/icon-dollar.svg";
+import IconPerson from "../assets/icon-person.svg";
 
 interface Tip {
   title: string;
@@ -40,19 +41,26 @@ const BillForm = () => {
     value: 0,
   });
   return (
-    <form className="font-bold">
+    <div className="px-1 font-bold">
       <label className="block" htmlFor="bill">
         <span>Bill</span>
       </label>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-          <img width={11} height={17} src={IconDollar} alt="" />
+          <img
+            width={11}
+            height={17}
+            src={IconDollar}
+            alt=""
+            aria-hidden="true"
+          />
         </div>
         <input
-          type="text"
+          type="number"
           className="form-input"
           name="bill"
           id="bill"
+          min={1}
           placeholder={"0"}
         />
       </div>
@@ -80,9 +88,46 @@ const BillForm = () => {
               {option.title}
             </RadioGroup.Option>
           ))}
+
+          <div>
+            <label htmlFor="custom-tip">
+              <span className="sr-only">Custom Tip</span>
+              <input
+                type="number"
+                className="form-input mt-0 border-0 px-4"
+                name="customTip"
+                id="custom-tip"
+                min={1}
+                placeholder={"0"}
+              />
+            </label>
+          </div>
         </div>
       </RadioGroup>
-    </form>
+
+      <label className="mt-8 block" htmlFor="people-number">
+        <span>Number of People</span>
+      </label>
+      <div className="relative">
+        <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+          <img
+            width={11}
+            height={17}
+            src={IconPerson}
+            alt=""
+            aria-hidden="true"
+          />
+        </div>
+        <input
+          type="number"
+          className="form-input"
+          name="peopleNumber"
+          id="people-number"
+          min={1}
+          placeholder={"0"}
+        />
+      </div>
+    </div>
   );
 };
 

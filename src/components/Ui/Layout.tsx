@@ -3,8 +3,8 @@ import Logo from "../../assets/logo.svg";
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="container flex h-screen min-h-[600px] flex-col items-center justify-center ">
-      <header className="-mt-24 pb-16">
+    <div className="container flex min-h-[600px] flex-col items-center justify-center pt-16 md:h-screen ">
+      <header className="pb-16 md:-mt-24">
         <h1 className="text-xl font-bold uppercase tracking-[0.45rem]">
           <span className="sr-only">
             Spli
