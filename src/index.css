@@ -5,6 +5,7 @@
 @layer base {
   :root {
     --color-primary: 172deg 67% 45%;
+    --color-primary-light: 173deg 61% 77%;
     --color-primary-dark: 183deg 100% 15%;
     --color-primary-darker: 186deg 14% 43%;
     --color-primary-grayish: 184deg 14% 56%;
