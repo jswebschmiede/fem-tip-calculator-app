@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
+import { Tip } from "../typings";
 import IconDollar from "../assets/icon-dollar.svg";
 import IconPerson from "../assets/icon-person.svg";
-
-interface Tip {
-  title: string;
-  value: number;
-}
 
 const tipOptions: Tip[] = [
   {
@@ -36,10 +32,11 @@ const classNames = (...classes: string[]): string => {
 };
 
 const BillForm = () => {
-  const [selectedTip, setSelectedTip] = useState<Tip>({
-    title: "",
-    value: 0,
-  });
+  const [selectedTip, setSelectedTip] = useState<number>(0);
+  const [bill, setBill] = useState<number>(0);
+  const [people, setPeople] = useState<number>(0);
+  const [customTip, setCustomTip] = useState<number>(0);
+
   return (
     <div className="px-1 font-bold">
       <label className="block" htmlFor="bill">
@@ -60,8 +57,9 @@ const BillForm = () => {
           className="form-input"
           name="bill"
           id="bill"
-          min={1}
           placeholder={"0"}
+          value={bill}
+          onChange={(e) => setBill(parseInt(e.target.value))}
         />
       </div>
 
@@ -81,7 +79,7 @@ const BillForm = () => {
                   active
                     ? "bg-primary text-primary-dark"
                     : "bg-primary-dark text-white",
-                  "group relative flex cursor-pointer items-center justify-center rounded py-2 px-4 text-xl font-bold  hover:bg-primary focus:outline-none sm:flex-1"
+                  "group relative flex cursor-pointer items-center justify-center rounded py-2 px-4 text-xl font-bold transition hover:bg-primary-light hover:text-primary-dark focus:outline-none sm:flex-1"
                 )
               }
             >
@@ -97,8 +95,9 @@ const BillForm = () => {
                 className="form-input mt-0 border-0 px-4"
                 name="customTip"
                 id="custom-tip"
-                min={1}
-                placeholder={"0"}
+                placeholder={"Custom"}
+                value={customTip}
+                onChange={(e) => setCustomTip(parseInt(e.target.value))}
               />
             </label>
           </div>
@@ -125,6 +124,8 @@ const BillForm = () => {
           id="people-number"
           min={1}
           placeholder={"0"}
+          value={people}
+          onChange={(e) => setPeople(parseInt(e.target.value))}
         />
       </div>
     </div>

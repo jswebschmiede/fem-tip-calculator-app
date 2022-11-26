@@ -23,7 +23,7 @@ const TippOutput = () => {
 
       <div className="flex h-full flex-col">
         <button
-          className="mt-auto w-full rounded bg-primary py-2 px-4 font-bold uppercase text-primary-dark"
+          className="mt-auto w-full rounded bg-primary py-2 px-4 font-bold uppercase text-primary-dark transition hover:bg-primary-light"
           type="reset"
         >
           Reset
