@@ -1,5 +1,5 @@
-import { RadioGroup } from "@headlessui/react";
 import { useState } from "react";
+import { RadioGroup } from "@headlessui/react";
 import IconDollar from "../assets/icon-dollar.svg";
 import IconPerson from "../assets/icon-person.svg";
 

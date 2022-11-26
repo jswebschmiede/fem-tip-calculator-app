@@ -1,5 +1,3 @@
-import React from "react";
-
 const TippOutput = () => {
   return (
     <div className="relative flex h-full flex-col rounded-xl bg-primary-dark py-10 px-8">
@@ -19,7 +17,7 @@ const TippOutput = () => {
           <small className="text-xs text-primary-grayish">/ person</small>
         </div>
         <div className="text-right">
-          <span className="text-4xl font-bold text-primary">${4.27}</span>
+          <span className="text-4xl font-bold text-primary">${42.27}</span>
         </div>
       </div>
 
