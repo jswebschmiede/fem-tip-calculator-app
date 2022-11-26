@@ -4,9 +4,34 @@
 
 @layer base {
   :root {
+    --color-primary: 172deg 67% 45%;
+    --color-primary-dark: 183deg 100% 15%;
+    --color-primary-darker: 186deg 14% 43%;
+    --color-primary-grayish: 184deg 14% 56%;
+    --color-primary-grayish-light: 185deg 41% 84%;
+    --color-primary-grayish-lighter: 189deg 41% 97%;
   }
 
   body {
-    @apply min-h-full overflow-x-hidden;
+    @apply min-h-full overflow-x-hidden bg-primary-grayish-light text-primary-darker;
+  }
+}
+
+@layer components {
+  .form-input {
+    @apply mt-2
+           block
+           w-full
+           rounded
+           border-transparent
+           bg-primary-grayish-lighter
+           pl-7
+           text-right
+           text-xl
+           text-primary-dark 
+           placeholder:text-primary-dark
+           focus:border-primary
+           focus:ring-1
+           focus:ring-primary;
   }
 }
