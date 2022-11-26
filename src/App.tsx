@@ -1,9 +1,10 @@
+import Calculator from "./components/Calculator";
 import Layout from "./components/Ui/Layout";
 
 const App = () => {
   return (
     <Layout>
-      <p>tester</p>
+      <Calculator />
     </Layout>
   );
 };

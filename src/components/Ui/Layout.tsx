@@ -1,10 +1,23 @@
 import { LayoutProps } from "../../typings";
+import Logo from "../../assets/logo.svg";
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <main className="container flex h-screen items-center justify-center">
-      {children}
-    </main>
+    <div className="container flex h-screen min-h-[600px] flex-col items-center justify-center ">
+      <header className="-mt-24 pb-16">
+        <h1 className="text-xl font-bold uppercase tracking-[0.45rem]">
+          <span className="sr-only">
+            Spli
+            <br />
+            tter
+          </span>
+          <img src={Logo} alt="Splitter Logo" />
+        </h1>
+      </header>
+      <main className="w-full max-w-[920px] rounded-2xl bg-white p-7 shadow-2xl shadow-black/10">
+        {children}
+      </main>
+    </div>
   );
 };
 
