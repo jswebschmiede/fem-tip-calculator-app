@@ -5,7 +5,6 @@ import Result from "./components/Result";
 import Layout from "./components/Ui/Layout";
 
 const reducer = inputReducer;
-let tipAmountOutput: number = 0;
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
