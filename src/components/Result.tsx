@@ -1,4 +1,16 @@
-const TippOutput = () => {
+export interface ResultProps {
+  amountOutput: number;
+  totalAmountPersonOutput: number;
+  onResetClick: VoidFunction;
+}
+
+const Result = ({
+  amountOutput,
+  totalAmountPersonOutput,
+  onResetClick,
+}: ResultProps) => {
+  const handlerReset = (): void => onResetClick();
+
   return (
     <div className="relative flex h-full flex-col rounded-xl bg-primary-dark py-10 px-8">
       <div className="mb-12 flex items-center justify-between gap-2">
@@ -7,7 +19,9 @@ const TippOutput = () => {
           <small className="text-xs text-primary-grayish">/ person</small>
         </div>
         <div className="text-right">
-          <span className="text-4xl font-bold text-primary">${4.27}</span>
+          <span className="text-4xl font-bold text-primary">
+            ${amountOutput.toFixed(2)}
+          </span>
         </div>
       </div>
 
@@ -17,7 +31,9 @@ const TippOutput = () => {
           <small className="text-xs text-primary-grayish">/ person</small>
         </div>
         <div className="text-right">
-          <span className="text-4xl font-bold text-primary">${42.27}</span>
+          <span className="text-4xl font-bold text-primary">
+            ${totalAmountPersonOutput.toFixed(2)}
+          </span>
         </div>
       </div>
 
@@ -25,6 +41,7 @@ const TippOutput = () => {
         <button
           className="mt-auto w-full rounded bg-primary py-2 px-4 font-bold uppercase text-primary-dark transition hover:bg-primary-light"
           type="reset"
+          onClick={handlerReset}
         >
           Reset
         </button>
@@ -33,4 +50,4 @@ const TippOutput = () => {
   );
 };
 
-export default TippOutput;
+export default Result;

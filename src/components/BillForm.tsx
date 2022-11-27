@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { Tip } from "../typings";
+import { BillProps, Tip } from "../typings";
 import IconDollar from "../assets/icon-dollar.svg";
 import IconPerson from "../assets/icon-person.svg";
 
@@ -31,11 +30,24 @@ const classNames = (...classes: string[]): string => {
   return classes.filter(Boolean).join(" ");
 };
 
-const BillForm = () => {
-  const [selectedTip, setSelectedTip] = useState<number>(0);
-  const [bill, setBill] = useState<number>(0);
-  const [people, setPeople] = useState<number>(0);
-  const [customTip, setCustomTip] = useState<number>(0);
+const BillForm = ({
+  onBillChange,
+  onPeopleChange,
+  onTipChange,
+  onCustomTipChange,
+  bill,
+  people,
+  selectedTip,
+  customTip,
+}: BillProps) => {
+  const handleBillInput = (event: React.ChangeEvent<HTMLInputElement>) =>
+    onBillChange(parseFloat(event.target.value) || 0);
+
+  const handlePeopleInput = (event: React.ChangeEvent<HTMLInputElement>) =>
+    onPeopleChange(parseInt(event.target.value) || 0);
+
+  const handleCustomTipInput = (event: React.ChangeEvent<HTMLInputElement>) =>
+    onCustomTipChange(parseInt(event.target.value) || 0);
 
   return (
     <div className="px-1 font-bold">
@@ -57,16 +69,19 @@ const BillForm = () => {
           className="form-input"
           name="bill"
           id="bill"
-          placeholder={"0"}
+          autoComplete="off"
+          placeholder="0"
+          min={1}
           value={bill}
-          onChange={(e) => setBill(parseInt(e.target.value))}
+          onChange={handleBillInput}
         />
       </div>
 
       <RadioGroup
         value={selectedTip}
-        onChange={setSelectedTip}
+        onChange={onTipChange}
         className="mt-8"
+        name="tip"
       >
         <RadioGroup.Label className="mb-3 block">Select Tip %</RadioGroup.Label>
         <div className="grid grid-cols-3 gap-3">
@@ -74,12 +89,16 @@ const BillForm = () => {
             <RadioGroup.Option
               key={option.title}
               value={option.value}
-              className={({ active }) =>
+              disabled={customTip > 0 ? true : false}
+              className={({ active, checked, disabled }) =>
                 classNames(
-                  active
+                  (active && checked) || (!active && checked)
                     ? "bg-primary text-primary-dark"
                     : "bg-primary-dark text-white",
-                  "group relative flex cursor-pointer items-center justify-center rounded py-2 px-4 text-xl font-bold transition hover:bg-primary-light hover:text-primary-dark focus:outline-none sm:flex-1"
+                  disabled
+                    ? "cursor-not-allowed bg-opacity-50"
+                    : "cursor-pointer hover:bg-primary-light hover:text-primary-dark",
+                  "group relative flex items-center justify-center rounded py-2 px-4 text-xl font-bold transition  focus:outline-none sm:flex-1"
                 )
               }
             >
@@ -96,16 +115,18 @@ const BillForm = () => {
                 name="customTip"
                 id="custom-tip"
                 placeholder={"Custom"}
+                autoComplete="off"
                 value={customTip}
-                onChange={(e) => setCustomTip(parseInt(e.target.value))}
+                onChange={handleCustomTipInput}
               />
             </label>
           </div>
         </div>
       </RadioGroup>
 
-      <label className="mt-8 block" htmlFor="people-number">
+      <label className="mt-8 flex justify-between" htmlFor="people-number">
         <span>Number of People</span>
+        {people === 0 && <span className="text-orange-600">Cant be Zero</span>}
       </label>
       <div className="relative">
         <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
@@ -119,13 +140,14 @@ const BillForm = () => {
         </div>
         <input
           type="number"
-          className="form-input"
+          className={`form-input ${
+            people === 0 ? "ring-2 ring-orange-600" : ""
+          }`}
           name="peopleNumber"
           id="people-number"
-          min={1}
-          placeholder={"0"}
+          autoComplete="off"
           value={people}
-          onChange={(e) => setPeople(parseInt(e.target.value))}
+          onChange={handlePeopleInput}
         />
       </div>
     </div>
