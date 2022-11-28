@@ -10,7 +10,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
     - [Links](#links)
-  - [My process](#my-process)
     - [Built with](#built-with)
     - [Useful resources](#useful-resources)
   - [Author](#author)
@@ -33,8 +32,6 @@ Users should be able to:
 
 - Solution URL: [https://github.com/jswebschmiede/fem-tip-calculator-app](https://github.com/jswebschmiede/fem-tip-calculator-app)
 - Live Site URL: [https://fem-tip-calculator-app-kappa.vercel.app/](https://fem-tip-calculator-app-kappa.vercel.app/)
-
-## My process
 
 ### Built with
 
