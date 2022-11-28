@@ -32,7 +32,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/jswebschmiede/fem-tip-calculator-app](https://github.com/jswebschmiede/fem-tip-calculator-app)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [https://fem-tip-calculator-app-kappa.vercel.app/](https://fem-tip-calculator-app-kappa.vercel.app/)
 
 ## My process
 
